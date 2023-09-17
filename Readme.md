@@ -11,3 +11,28 @@ In the game, the player is asked to think of an animal.
 - If the computer does not correctly identify the animal, the player wins and the computer displays an appropriate message and asks for a distinguishing/differentiating question, adds that question to the tree and adds the new animal to the tree.
 - The tree can continue to grow as you play the game.
 - The player will then be asked if he/she wishes to play again. The game continues until the player gives a negative response.
+
+
+```
+final TextField nameText = new TextField();
+        nameText.setText("Ndemo Nancy");
+        nameText.setLayoutX(10);
+        nameText.setLayoutY(10);
+
+        final Button button = new Button();
+        button.setLayoutX(160);
+        button.setLayoutY(10);
+        button.setText("Say Hello");
+
+        final Label greetingLabel = new Label();
+        greetingLabel.setLayoutX(10);
+        greetingLabel.setLayoutY(40);
+
+        button.setOnAction(event -> greetingLabel.setText(String.format("Hello %s!", nameText.getText())));
+
+        final Group root = new Group();
+        root.getChildren().addAll(nameText, button, greetingLabel);
+
+        primaryStage.setTitle("Guessing Game");
+        primaryStage.setScene(new Scene(root, 240, 70));
+```
