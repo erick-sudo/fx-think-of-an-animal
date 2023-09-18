@@ -1,34 +1,24 @@
 package com.animal.guessing;
 
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextInputDialog;
-
-import java.util.Optional;
-
 public class Game {
+
+    private DecisionTree tree;
 
     private IView view;
 
-    public Game(IView v) {
-
+    public Game(IView view) {
+        this.view = view;
     }
 
     public void play() {
-        TextInputDialog animalInputDialog = new TextInputDialog();
-        animalInputDialog.setTitle("Confirmation");
-        animalInputDialog.setHeaderText("What is your animal?");
-
-        // ButtonType okButton = new ButtonType("OK");
-        // ButtonType cancelButton = new ButtonType("Cancel");
-        // animalInputDialog.getDialogPane().getButtonTypes().setAll(okButton, cancelButton);
-
-        // Wait animal input confirmation
-        Optional<String> optionalAnimal = animalInputDialog.showAndWait();
-
-        if(optionalAnimal.isPresent()) {
-
-        } else {
-            System.out.println("Cancelled");
+        help(); // Display the help message
+        boolean again = true;
+        while(again) {
+            if(view.choose("is your animaal a cat?")) {
+                again = view.choose("I won! Play again?");
+            } else {
+                again = view.choose("You won! Play again?");
+            }
         }
     }
 
@@ -45,6 +35,7 @@ public class Game {
     }
 
     private void help() {
+        String helpMessage = "Think of an animal.If my tree is non-empty, I will ask some yes/no questions to try to determine what it is.";
 
     }
 }
