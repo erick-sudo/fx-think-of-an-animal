@@ -1,25 +1,64 @@
 package com.animal.guessing;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class Controller implements IView{
 
+    @FXML
+    private TextArea textArea;
+
+    private StringProperty textProperty = new SimpleStringProperty();
+
+    @FXML
     private Game game;
 
     public void bind(Game g) {
         this.game = g;
+        textArea.textProperty().bindBidirectional(textProperty);
     }
 
     @Override
     public void display(String s) {
+        textProperty.set(s);
+    }
 
+    @FXML
+    public void playGame() {
+        game.play();
+    }
+
+    public void saveGame() {
+        try {
+            game.save("filename");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void loadGame() {
+        try {
+            game.load("filename");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void displayTree() {
+        game.display();
+    }
+
+    @FXML
+    private void exit() {
+        System.exit(0);
     }
 
     @Override
@@ -35,10 +74,17 @@ public class Controller implements IView{
         while(!valid) {
             TextInputDialog tid = new TextInputDialog("");
             tid.setHeaderText(question);
+            Stage alertStage = (Stage) tid.getDialogPane().getScene().getWindow();
+            alertStage.initModality(Modality.APPLICATION_MODAL);
+            alertStage.initStyle(StageStyle.UTILITY);
+            alertStage.setAlwaysOnTop(true);
 
             // Disable the cancel button
             Button cancel = (Button) tid.getDialogPane().lookupButton(ButtonType.CANCEL);
             cancel.setDisable(true);
+
+            // Synchronize and wait for input
+            tid.showAndWait();
 
             s = tid.getEditor().getText();
             valid = validate(s);
@@ -67,6 +113,10 @@ public class Controller implements IView{
 
         Alert alert = new Alert(Alert.AlertType.NONE, question, b1, b2);
         alert.setTitle("Choose");
+        Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
+        alertStage.initModality(Modality.APPLICATION_MODAL);
+        alertStage.initStyle(StageStyle.UTILITY);
+        alertStage.setAlwaysOnTop(true);
 
         Optional<ButtonType> result = alert.showAndWait();
 

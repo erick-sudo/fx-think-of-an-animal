@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
-<VBox alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.animal.guessing.Controller">
-
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.animal.guessing.Controller" style="">
+    <HBox alignment="CENTER">
+        <Label style="-fx-font-weight: bolder; -fx-padding: 1em; -fx-font-size: 1.5em; -fx-text-fill: #033403;" text="Animal Guessing Game"/>
+    </HBox>
+    <HBox VBox.vgrow="ALWAYS" style="-fx-padding: 0 2em 0 2em;">
+        <VBox spacing="40.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <Button onAction="#loadGame" style="-fx-font-size: 1.2em; -fx-padding: 0.5em 2em; -fx-text-fill: #033403; -fx-border-color: #033403;" text="Load" />
+            <Button onAction="#saveGame" style="-fx-font-size: 1.2em; -fx-padding: 0.5em 2em; -fx-text-fill: #033403; -fx-border-color: #033403;" text="Save" />
+            <Button onAction="#displayTree" style="-fx-font-size: 1.2em; -fx-padding: 0.5em 2em; -fx-text-fill: #033403; -fx-border-color: #033403;" text="Display" />
+            <Button onAction="#playGame" style="-fx-font-size: 1.2em; -fx-padding: 0.5em 2em; -fx-text-fill: #033403; -fx-border-color: #033403;" text="Play" />
+        </VBox>
+        <VBox HBox.hgrow="ALWAYS" style="">
+            <TextArea fx:id="textArea" VBox.vgrow="ALWAYS" style="-fx-font-size: 1.2em; -fx-wrap-text: true; -fx-text-fill: #3b0d0d;" />
+        </VBox>
+    </HBox>
+    <HBox alignment="CENTER" style="-fx-padding: 1em;">
+        <Button onAction="#exit" style="-fx-font-size: 1.2em; -fx-padding: 0.5em 2em; -fx-text-fill: white; -fx-border-color: #541507; -fx-background-color: #541507" text="Exit" />
+    </HBox>
 </VBox>

@@ -15,10 +15,11 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 850, 550);
+        stage.setTitle("Animal");
+        Scene scene = new Scene(fxmlLoader.load(), 1000, 550);
 
         // Create a view
-        Controller controllerView = new Controller();
+        Controller controllerView = fxmlLoader.getController();
 
         // Create a game
         Game game = new Game(controllerView);
