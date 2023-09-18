@@ -8,13 +8,15 @@ public class Game {
 
     public Game(IView view) {
         this.view = view;
+        AnimalBehaviour animalBehaviour = new AnimalBehaviour(this.view);
+        this.tree = new DecisionTree(animalBehaviour);
     }
 
     public void play() {
         help(); // Display the help message
         boolean again = true;
         while(again) {
-            if(view.choose("is your animal a cat?")) {
+            if(tree.execute()) {
                 again = view.choose("I won! Play again?");
             } else {
                 again = view.choose("You won! Play again?");
