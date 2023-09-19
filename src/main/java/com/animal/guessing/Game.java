@@ -17,24 +17,23 @@ public class Game {
         boolean again = true;
         while(again) {
             if(tree.execute()) {
-                again = view.choose("I won! Play again?");
-            } else {
                 again = view.choose("You won! Play again?");
+            } else {
+                again = view.choose("I won! Play again?");
             }
         }
     }
 
     public void load(String fname) throws Exception {
-        view.display("Load: Under Development");
+        tree.load(fname);
     }
 
     public void save(String fname) throws Exception {
-        view.display("Save: Under Development");
+        tree.save(fname);
     }
 
     public String display() {
-        view.display("DecisionTree: Under Development");
-        return "";
+        return tree.display();
     }
 
     private void help() {

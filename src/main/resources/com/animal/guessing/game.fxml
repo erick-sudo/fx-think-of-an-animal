@@ -19,7 +19,7 @@
             <Button onAction="#playGame" style="-fx-font-size: 1.2em; -fx-padding: 0.5em 2em; -fx-text-fill: #033403; -fx-border-color: #033403;" text="Play" />
         </VBox>
         <VBox HBox.hgrow="ALWAYS" style="">
-            <TextArea fx:id="textArea" VBox.vgrow="ALWAYS" style="-fx-font-size: 1.2em; -fx-wrap-text: true; -fx-text-fill: #3b0d0d;" />
+            <TextArea fx:id="textArea" VBox.vgrow="ALWAYS" style="-fx-font-size: 1.2em; -fx-font-weight: bold; -fx-wrap-text: true; -fx-text-fill: #3b0d0d;" />
         </VBox>
     </HBox>
     <HBox alignment="CENTER" style="-fx-padding: 1em;">

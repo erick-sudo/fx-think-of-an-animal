@@ -172,3 +172,17 @@ private boolean infoQueryDialogue(String info) {
 //        // Show stage
 //        primaryStage.show();
 ```
+
+root: backbone? 0
+left:  fillament? 1
+left:  jelly 2
+right:  tilapia 2
+right:  claws? 1
+left:  tree climber? 2
+left:  bird 3
+right:  monkey 3
+right:  eats grass? 2
+left:  swims? 3
+left:  cat 4
+right:  crocodile 4
+right:  zebra 3

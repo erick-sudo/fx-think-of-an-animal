@@ -38,22 +38,24 @@ public class Controller implements IView{
 
     public void saveGame() {
         try {
-            game.save("filename");
+            game.save("animal.txt");
+            display("Game saved successfully");
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            display("Failed to save progress");
         }
     }
 
     public void loadGame() {
         try {
-            game.load("filename");
+            game.load("animal.txt");
+            display("Game loaded successfully");
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            display("Could retrieve any previous game history. Please save to keep your progress before exiting game.");
         }
     }
 
     public void displayTree() {
-        game.display();
+        this.display(game.display());
     }
 
     @FXML

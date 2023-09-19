@@ -16,12 +16,12 @@ public class Node {
     /**
      * Reference to the left subtree
      */
-    private Node left;
+    public Node left;
 
     /**
      * Reference to the right subtree
      */
-    private Node right;
+    public Node right;
 
     public Node(String data) {
         this(data, 0);
@@ -44,12 +44,12 @@ public class Node {
 
     public void extend(String data, String leftAnimal, String rightAnimal) {
         this.data = data;
-        this.left = new Node(leftAnimal, this.label+1);
-        this.right = new Node(rightAnimal, this.label+1);
+        this.left = new Node(leftAnimal, this.label + 1);
+        this.right = new Node(rightAnimal, this.label + 1);
     }
 
     public boolean isLeaf() {
-        return this.data.endsWith("?");
+        return this.left == null || this.right == null;
     }
 
     public  Node getLeft() {
